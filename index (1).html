@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro Sánchez de Cózar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE  everyday-scholarly: a small research house in the countryside, warm and calm
+   IDEA   the place itself: tapia walls, clay roof tiles, dry forest on the hills of San Gil
+   PICTURE an illustrated scene of the hillside: dry-forest trees, the tapia house, the little pitch
+   COLOUR dry-forest green ground up top, white below, clay-tile terracotta accent, straw for light
+   TYPE   Libre Franklin 800 for titles, Libre Franklin for text
+   LAYOUT laptop: nav, title over a wide scene band; sections in two columns; phone: stacked */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#111a14);
+--ink:light-dark(#18211b,#e9eee6);
+--muted:light-dark(#4b574e,#aab7ab);
+--forest:light-dark(#1e3b2a,#0d1f15);
+--forest2:light-dark(#2f5a3e,#1a3626);
+--straw:light-dark(#ecdcaa,#d9c78f);
+--clay:light-dark(#b8472a,#e0734f);
+--panel:light-dark(#f3f1ea,#18241c);
+--rule:light-dark(#d9d6cb,#2c3b30)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Libre Franklin",system-ui,sans-serif;overflow-x:clip}
+a{color:var(--clay)}
+img{max-width:100%}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+html[data-lang=es] [lang=en]{display:none}
+html[data-lang=en] [lang=es]{display:none}
+header{background:var(--forest);color:var(--straw)}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;padding:14px max(5vw,16px);max-width:1240px;margin:0 auto}
+nav .brand{font-weight:800;margin-right:auto;color:#fff;text-decoration:none;font-size:17px}
+nav a{color:var(--straw);text-decoration:none;font-weight:500}
+nav a:hover,nav a:focus-visible{color:#fff;text-decoration:underline}
+.langs{display:flex;border:1px solid color-mix(in srgb,var(--straw) 55%,transparent);border-radius:999px;overflow:hidden}
+.langs button{font:inherit;font-weight:700;font-size:14px;background:none;color:var(--straw);border:0;padding:8px 14px;min-height:40px;cursor:pointer}
+.langs button[aria-pressed=true]{background:var(--straw);color:var(--forest)}
+.langs button:focus-visible{outline:2px solid #fff;outline-offset:-3px}
+.hero{padding-top:clamp(20px,3vw,40px);padding-bottom:0}
+.hero h1{font-weight:800;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:-.02em;margin:0 0 14px;color:#fff;text-wrap:balance;max-width:16em}
+.hero p{max-width:40em;margin:0;color:var(--straw);font-size:18px}
+.scene{display:block;width:100%;height:clamp(220px,34vw,440px);margin-top:clamp(18px,3vw,36px)}
+h2{font-weight:800;font-size:clamp(28px,3.4vw,38px);line-height:1.1;letter-spacing:-.02em;margin:0 0 18px;text-wrap:balance}
+h3{font-size:19px;margin:0 0 4px;line-height:1.3}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.lead{font-size:18px;max-width:38em}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.facts li{display:grid;grid-template-columns:4.2em minmax(0,1fr);gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid var(--rule)}
+.facts b{font-size:26px;font-weight:800;color:var(--clay);white-space:nowrap}
+.alt{background:var(--panel)}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.person{background:var(--bg);border:1px solid var(--rule);border-radius:14px;padding:22px;display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px}
+.mono{width:64px;height:64px;border-radius:50%;background:var(--forest2);color:var(--straw);display:grid;place-items:center;font-weight:800;font-size:22px}
+.person .role{color:var(--muted);font-size:15px;margin:0 0 8px}
+.person p{margin:0}
+.join{border-style:dashed;background:transparent}
+.join .mono{background:transparent;border:2px dashed var(--forest2);color:var(--forest2)}
+.pubs{list-style:none;margin:0;padding:0}
+.pubs li{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--rule)}
+.pubs .id{font-weight:800;color:var(--clay);white-space:nowrap}
+.pubs .t{font-weight:700}
+.pubs .m{color:var(--muted);font-size:15px}
+.note{color:var(--muted);font-size:14px;margin-top:14px}
+.event{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,40px);background:var(--forest);color:#eef2ea;border-radius:18px;padding:clamp(22px,3.5vw,40px)}
+.event .when{font-weight:800;font-size:clamp(40px,6vw,64px);line-height:1;color:var(--straw);white-space:nowrap}
+.event .when span{display:block;font-size:18px;font-weight:500;margin-top:8px;color:#eef2ea}
+.event h3{font-size:24px;color:#fff;margin-bottom:10px}
+.event ul{margin:12px 0 0;padding-left:1.2em}
+footer{background:var(--forest);color:var(--straw)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:24px}
+footer p{margin:0 0 8px}
+@media(max-width:760px){.two,footer .wrap{grid-template-columns:minmax(0,1fr)}.event{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){nav{gap:4px 16px}.facts li,.pubs li{grid-template-columns:minmax(0,1fr);gap:2px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dog{animation:none!important}}
+.dog{animation:wag 1.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes wag{0%,100%{transform:rotate(0)}50%{transform:rotate(-14deg)}}
+</style>
+</head>
+<body>
+<header>
+  <nav aria-label="Principal">
+    <a class="brand" href="#inicio">Centro Sánchez de Cózar</a>
+    <a href="#lugar"><span lang="es">El lugar</span><span lang="en">The place</span></a>
+    <a href="#antonio">Antonio S. de Cózar</a>
+    <a href="#gente"><span lang="es">Investigadores</span><span lang="en">Researchers</span></a>
+    <a href="#publicaciones"><span lang="es">Publicaciones</span><span lang="en">Publications</span></a>
+    <a href="#eventos"><span lang="es">Eventos</span><span lang="en">Events</span></a>
+    <div class="langs" role="group" aria-label="Idioma / Language">
+      <button type="button" id="b-es" data-set="es" aria-pressed="true">ES</button>
+      <button type="button" id="b-en" data-set="en" aria-pressed="false">EN</button>
+    </div>
+  </nav>
+  <div class="band hero" id="inicio">
+    <div class="wrap">
+      <h1><span lang="es">Centro de Investigaciones Antonio Sánchez de Cózar</span><span lang="en">Antonio Sánchez de Cózar Research Center</span></h1>
+      <p lang="es">Una casa de pensamiento en el bosque seco de San Gil, Santander. Matemáticas, ciencias de la computación y algo de química, con tiempo para pensar despacio.</p>
+      <p lang="en">A small house of thought in the dry forest of San Gil, Santander, Colombia. Mathematics, theoretical computer science and a little chemistry, with time to think slowly.</p>
+    </div>
+    <svg class="scene" viewBox="0 0 1200 440" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Ilustración: colinas de bosque seco, la casa de tapia y la pequeña cancha">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a5a40"/><stop offset="1" stop-color="#8aa874"/></linearGradient>
+        <linearGradient id="wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f1e3c4"/><stop offset="1" stop-color="#d9c095"/></linearGradient>
+        <g id="tree"><rect x="-3" y="-34" width="6" height="36" fill="#4a3a28"/><ellipse cx="0" cy="-44" rx="26" ry="16" fill="#3f6b3c"/><ellipse cx="-8" cy="-49" rx="14" ry="9" fill="#5b8a4d"/><ellipse cx="9" cy="-40" rx="12" ry="7" fill="#2f5532"/></g>
+        <g id="treeDry"><path d="M0 2 L0 -30 M0 -18 L-14 -34 M0 -24 L12 -38" stroke="#5a4630" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="-14" cy="-38" rx="11" ry="6" fill="#9aa85a"/><ellipse cx="13" cy="-42" rx="12" ry="7" fill="#b3b866"/></g>
+      </defs>
+      <rect width="1200" height="440" fill="url(#sky)"/>
+      <circle cx="980" cy="90" r="42" fill="#f3e6b0" opacity=".9"/>
+      <path d="M0 230 C180 170 320 210 470 180 C640 145 760 200 930 165 C1050 140 1130 170 1200 160 L1200 440 L0 440Z" fill="#9db383" opacity=".75"/>
+      <path d="M0 290 C160 240 300 280 460 250 C620 220 820 280 1000 240 C1090 222 1150 240 1200 232 L1200 440 L0 440Z" fill="#6f9460"/>
+      <g id="far"></g>
+      <path d="M0 350 C220 315 420 345 620 330 C820 315 1000 350 1200 330 L1200 440 L0 440Z" fill="#46703f"/>
+      <!-- pitch -->
+      <g transform="translate(120 352)">
+        <path d="M0 0 L210 0 L240 52 L-30 52Z" fill="#7da35a"/>
+        <path d="M105 0 L105 52 M0 0 L210 0 L240 52 L-30 52Z" stroke="#eef2d8" stroke-width="2" fill="none" opacity=".8"/>
+        <path d="M-12 26 l0 -18 l10 0 M222 26 l0 -18 l-10 0" stroke="#fff" stroke-width="3" fill="none"/>
+      </g>
+      <!-- tapia house -->
+      <g transform="translate(560 270)">
+        <ellipse cx="120" cy="112" rx="170" ry="12" fill="#2f5532" opacity=".5"/>
+        <rect x="0" y="40" width="240" height="70" fill="url(#wall)"/>
+        <rect x="0" y="40" width="240" height="8" fill="#000" opacity=".08"/>
+        <path d="M-18 44 L120 -6 L258 44Z" fill="#b8472a"/>
+        <path d="M-18 44 L120 -6 L120 44Z" fill="#cf5a37"/>
+        <path d="M-18 44 L258 44" stroke="#8a3520" stroke-width="4"/>
+        <rect x="104" y="64" width="32" height="46" fill="#6b3f22"/>
+        <rect x="30" y="62" width="34" height="26" fill="#3a5a48"/><rect x="176" y="62" width="34" height="26" fill="#3a5a48"/>
+        <path d="M30 62 h34 M47 62 v26 M176 62 h34 M193 62 v26" stroke="#f1e3c4" stroke-width="3"/>
+      </g>
+      <!-- dogs -->
+      <g transform="translate(470 368)"><ellipse cx="0" cy="0" rx="16" ry="8" fill="#c9a46b"/><circle cx="15" cy="-7" r="7" fill="#c9a46b"/><path class="dog" d="M-15 -2 q-10 -10 -6 -16" stroke="#c9a46b" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-9 6v8M9 6v8" stroke="#c9a46b" stroke-width="4"/></g>
+      <g transform="translate(860 372)"><ellipse cx="0" cy="0" rx="15" ry="8" fill="#3b2f27"/><circle cx="-14" cy="-7" r="7" fill="#3b2f27"/><path class="dog" d="M14 -2 q10 -10 6 -16" stroke="#3b2f27" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-8 6v8M8 6v8" stroke="#3b2f27" stroke-width="4"/></g>
+      <g id="near"></g>
+    </svg>
+  </div>
+</header>
+
+<main>
+  <section class="band" id="lugar">
+    <div class="wrap two">
+      <div>
+        <h2><span lang="es">Una finca de bosque seco convertida en lugar de trabajo</span><span lang="en">A dry-forest farm turned into a place to work</span></h2>
+        <p class="lead" lang="es">El Centro funciona en una finca familiar de dos hectáreas de bosque seco a las afueras de San Gil, camino a Barichara. Lleva el nombre de Antonio Sánchez de Cózar y quiere ser lo que fue la Villa Matemática de Şirince para Ali Nesin: un sitio pequeño donde estudiantes e investigadores vienen a pensar juntos, lejos del ruido.</p>
+        <p class="lead" lang="en">The Center lives on a two-hectare family farm of dry tropical forest just outside San Gil, on the road to Barichara. It bears the name of Antonio Sánchez de Cózar and hopes to be what the Mathematics Village of Şirince was for Ali Nesin: a small place where students and researchers come to think together, away from the noise.</p>
+        <p lang="es">La sala de trabajo está en la vieja casa de tapia. Muchos de los árboles los sembramos nosotros, y la cancha de fútbol se hizo a mano durante la pandemia, arrancando raíces viejas. Lupe y Lola, las perras de la casa, reciben a los visitantes.</p>
+        <p lang="en">The seminar room is in the old rammed-earth (tapia) house. We planted many of the trees ourselves, and the small football pitch was built by hand during the pandemic, pulling out old roots. Lupe and Lola, the house dogs, welcome visitors.</p>
+      </div>
+      <ul class="facts">
+        <li><b>2 ha</b><span lang="es">de bosque seco tropical en las colinas de San Gil.</span><span lang="en">of tropical dry forest on the hills of San Gil.</span></li>
+        <li><b>15</b><span lang="es">personas caben en la sala de la casa de tapia: seminarios, cursillos y sesiones de problemas abiertos.</span><span lang="en">people fit in the tapia-house room: seminars, short courses and open-problem sessions.</span></li>
+        <li><b>2</b><span lang="es">casas para alojar a investigadores visitantes, posdoctorados y asistentes a los talleres.</span><span lang="en">houses to host visiting researchers, postdocs and workshop participants.</span></li>
+        <li><b>1</b><span lang="es">cancha de fútbol hecha a mano, para después del tablero.</span><span lang="en">hand-built football pitch, for after the blackboard.</span></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="band alt" id="antonio">
+    <div class="wrap two">
+      <div>
+        <h2><span lang="es">Antonio Sánchez de Cózar Guanentá, el primer astrónomo de estas tierras</span><span lang="en">Antonio Sánchez de Cózar Guanentá, the first astronomer of these lands</span></h2>
+        <p class="lead" lang="es">Sacerdote mestizo nacido en Mochuelo, hoy San Gil, y capellán en Vélez durante las últimas décadas del siglo XVII. Firmaba con el apellido Guanentá, en honor a su ascendencia: descendía de conquistadores y de caciques, y la tradición lo emparenta con el cacique Guanentá. Cuenta la leyenda, que todavía se canta en el himno del Colegio Guanentá de San Gil, que el cacique se lanzó a un precipicio para no ser capturado por los españoles y que, mientras caía, se convirtió en un cóndor que cubrió el sol con sus alas.</p>
+        <p class="lead" lang="en">A mestizo priest born in Mochuelo, today San Gil, and chaplain in Vélez during the last decades of the seventeenth century. He signed with the name Guanentá in honour of his ancestry: he descended from conquistadors and indigenous chiefs, and tradition links him to the cacique Guanentá. The legend, still sung in the anthem of San Gil's Colegio Guanentá, says that the cacique leapt from a cliff rather than be captured by the Spaniards and, as he fell, turned into a condor whose wings covered the sun.</p>
+        <p lang="es">Durante veinte años, entre 1676 y 1696, escribió el <i>Tratado de astronomía y de la reformación del tiempo</i>: cálculos de efemérides y de cronología orientados a fijar la fecha de la Pascua y la Semana Santa, tomando a Vélez como centro de cálculo. El manuscrito, conservado en la Biblioteca Nacional de Colombia, pasó casi inadvertido hasta que fue estudiado en la última década. Hoy se considera el primer estudio original de astronomía hecho en suelo colombiano, un siglo antes de Mutis y Caldas.</p>
+        <p lang="en">Over twenty years, between 1676 and 1696, he wrote the <i>Tratado de astronomía y de la reformación del tiempo</i> (Treatise on astronomy and the reform of time): ephemerides and chronology aimed at fixing the date of Easter and Holy Week, with Vélez as the centre of calculation. The manuscript, kept at the National Library of Colombia, went almost unnoticed until it was studied in the last decade. It is now regarded as the first original astronomical work produced on Colombian soil, a century before Mutis and Caldas.</p>
+        <p lang="es">El Centro lleva su nombre porque fue un sangileño que hizo ciencia en la provincia, con pocos recursos y mucha paciencia.</p>
+        <p lang="en">The Center bears his name because he was a man from San Gil who did science in the provinces, with few resources and much patience.</p>
+      </div>
+      <ul class="facts">
+        <li><b>1676</b><span lang="es">empieza a escribir el <i>Tratado</i>.</span><span lang="en">begins writing the <i>Tratado</i>.</span></li>
+        <li><b>1696</b><span lang="es">lo termina: veinte años de cálculos.</span><span lang="en">finishes it: twenty years of calculations.</span></li>
+        <li><b>RM245</b><span lang="es">signatura del manuscrito en la Biblioteca Nacional de Colombia.</span><span lang="en">shelfmark of the manuscript at the National Library of Colombia.</span></li>
+        <li><b>+100</b><span lang="es">años antes de Caldas: la astronomía colombiana empieza antes de lo que se creía.</span><span lang="en">years before Caldas: Colombian astronomy begins earlier than thought.</span></li>
+        <li style="display:block;border-top:1px solid var(--rule);padding-top:12px;font-size:14px;color:var(--muted)"><span lang="es">Para leer más:</span><span lang="en">Further reading:</span> <a href="http://www.scielo.org.co/scielo.php?script=sci_arttext&amp;pid=S0370-39082019000200255">Rev. Acad. Colomb. Cienc. (2019)</a> · <a href="https://www.tandfonline.com/doi/full/10.1080/00033790.2021.1944667">Annals of Science (2021)</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="band" id="gente">
+    <div class="wrap">
+      <h2><span lang="es">Investigadores</span><span lang="en">Researchers</span></h2>
+      <div class="people">
+        <article class="person">
+          <div class="mono" aria-hidden="true">JAM</div>
+          <div>
+            <h3>J. Andrés Montoya</h3>
+            <p class="role"><span lang="es">Fundador · Universidad Nacional de Colombia, Bogotá</span><span lang="en">Founder · Universidad Nacional de Colombia, Bogotá</span></p>
+            <p lang="es">Complejidad computacional, autómatas y lenguajes formales, lógica computacional, problemas de conteo y redes de reacción química.</p>
+            <p lang="en">Computational complexity, automata and formal languages, computational logic, counting problems and chemical reaction networks.</p>
+          </div>
+        </article>
+        <article class="person">
+          <div class="mono" aria-hidden="true">CM</div>
+          <div>
+            <h3>Carolina Mejía</h3>
+            <p class="role"><span lang="es">Investigadora</span><span lang="en">Researcher</span></p>
+            <p lang="es">Redes de reacción química y homoquiralidad, dinámicas de consenso, combinatoria.</p>
+            <p lang="en">Chemical reaction networks and homochirality, consensus dynamics, combinatorics.</p>
+          </div>
+        </article>
+        <article class="person join">
+          <div class="mono" aria-hidden="true">+</div>
+          <div>
+            <h3><span lang="es">Los que se vayan sumando</span><span lang="en">Those who join us</span></h3>
+            <p lang="es">Estudiantes, colegas y visitantes que quieran trabajar aquí una temporada. Escríbenos.</p>
+            <p lang="en">Students, colleagues and visitors who would like to spend some time working here. Write to us.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="publicaciones">
+    <div class="wrap">
+      <h2><span lang="es">Informes técnicos</span><span lang="en">Technical reports</span></h2>
+      <p lang="es" style="max-width:42em">Preprints del Centro, depositados en Zenodo con DOI permanente.</p>
+      <p lang="en" style="max-width:42em">Preprints of the Center, deposited on Zenodo with a permanent DOI.</p>
+      <ul class="pubs">
+        <li><span class="id">TR 2026-01</span><div><div class="t">The Variety DA Revisited</div><div class="m">J. A. Montoya · 2026 · DOI: <a href="https://doi.org/10.5281/zenodo.24570729">10.5281/zenodo.24570729</a></div></div></li>
+        <li><span class="id">TR 2026-02</span><div><div class="t">A Temporal Logic of Phase-Based Processes: Two Variables and Linear Duration Constraints</div><div class="m">J. A. Montoya · 2026 · DOI: <a href="https://doi.org/10.5281/zenodo.24571357">10.5281/zenodo.24571357</a></div></div></li>
+        <li><span class="id">TR 2026-03</span><div><div class="t">Oscillatory Symmetry Breaking Turing Bifurcations</div><div class="m">J. A. Montoya, C. Mejía · 2026 · DOI: <a href="https://doi.org/10.5281/zenodo.24572538">10.5281/zenodo.24572538</a></div></div></li>
+        <li><span class="id">TR 2026-04</span><div><div class="t">Frank's Inequality and the Amplification of Majorities in Consensus Dynamics</div><div class="m">J. A. Montoya, C. Mejía · 2026 · DOI: <a href="https://doi.org/10.5281/zenodo.24573423">10.5281/zenodo.24573423</a></div></div></li>
+        <li><span class="id">TR 2026-05</span><div><div class="t">The smallest programmable machine and the hardness of analyzing it</div><div class="m">J. A. Montoya, J. S. Rueda Segura · 2026 · DOI: <span lang="es">pendiente</span><span lang="en">pending</span></div></div></li>
+        <li><span class="id">TR 2026-06</span><div><div class="t">Tally Counting on Cayley Graphs and the Unambiguous Pushdown Hierarchy</div><div class="m">J. A. Montoya · 2026 · DOI: <span lang="es">pendiente</span><span lang="en">pending</span></div></div></li>
+      </ul>
+      <p class="note" lang="es">Lista inicial: los DOI se añaden al depositar cada informe en Zenodo.</p>
+      <p class="note" lang="en">Initial list: DOIs are added as each report is deposited on Zenodo.</p>
+    </div>
+  </section>
+
+  <section class="band" id="eventos">
+    <div class="wrap">
+      <h2><span lang="es">Eventos</span><span lang="en">Events</span></h2>
+      <article class="event">
+        <div class="when"><span lang="es">Ene</span><span lang="en">Jan</span> 2027<span lang="es">mediados de enero · San Gil</span><span lang="en">mid-January · San Gil</span></div>
+        <div>
+          <h3><span lang="es">Primer Encuentro Colombiano de Complejidad Computacional</span><span lang="en">First Colombian Meeting on Computational Complexity</span></h3>
+          <p lang="es" style="margin:0">Unos días de charlas, problemas abiertos y caminatas, con estudiantes y profesores que trabajan en complejidad en Colombia. Cupo pequeño, por la sala.</p>
+          <p lang="en" style="margin:0">A few days of talks, open problems and walks, with students and faculty working on complexity in Colombia. Small by design: the room holds fifteen.</p>
+          <ul>
+            <li lang="es">Charlas cortas de los participantes y sesiones de problemas abiertos.</li>
+            <li lang="en">Short talks by participants and open-problem sessions.</li>
+            <li lang="es">Alojamiento en el Centro para quienes vienen de fuera.</li>
+            <li lang="en">Lodging at the Center for those coming from elsewhere.</li>
+            <li lang="es">Fechas exactas y programa: próximamente.</li>
+            <li lang="en">Exact dates and programme: coming soon.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="band">
+  <div class="wrap">
+    <div>
+      <p style="font-weight:800;color:#fff;font-size:18px">Centro de Investigaciones Antonio Sánchez de Cózar</p>
+      <p lang="es">San Gil, Santander, Colombia. La ubicación exacta se comparte con quienes vienen de visita.</p>
+      <p lang="en">San Gil, Santander, Colombia. The exact location is shared with visitors.</p>
+    </div>
+    <div>
+      <p lang="es">Contacto: J. Andrés Montoya, Universidad Nacional de Colombia.</p>
+      <p lang="en">Contact: J. Andrés Montoya, Universidad Nacional de Colombia.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+{
+  const root=document.documentElement;
+  const btns=[...document.querySelectorAll('.langs button')];
+  const set=l=>{root.dataset.lang=l;root.lang=l;btns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.set===l)));try{localStorage.setItem('csc-lang',l)}catch(e){}};
+  btns.forEach(b=>b.addEventListener('click',()=>set(b.dataset.set)));
+  let saved=null;try{saved=localStorage.getItem('csc-lang')}catch(e){}
+  set(saved==='en'||saved==='es'?saved:((navigator.language||'es').startsWith('es')?'es':'en'));
+  let s=7;const rnd=()=>(s=s*16807%2147483647)/2147483647;
+  const stamp=(id,n,y0,y1,sc0,sc1,skip)=>{const g=document.getElementById(id);let h='';for(let i=0;i<n;i++){const x=rnd()*1200;if(skip&&skip(x))continue;const y=y0+rnd()*(y1-y0);const sc=sc0+rnd()*(sc1-sc0);h+=`<use href="#${rnd()<.35?'treeDry':'tree'}" transform="translate(${x.toFixed(0)} ${y.toFixed(0)}) scale(${sc.toFixed(2)})"/>`}g.innerHTML=h};
+  stamp('far',46,232,290,.45,.75);
+  stamp('near',14,380,440,1.1,1.6,x=>(x>80&&x<400)||(x>520&&x<840));
+}
+</script>
+</body>
+</html>
